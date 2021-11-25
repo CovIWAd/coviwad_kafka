@@ -4,15 +4,19 @@ Kafka configuration used to launch kafka with docker for CovIWAd
 
 ## Setup kafka with docker
 
-Run docker-compose configuration:
-`docker-compose -f docker-compose.yml up -d`
+Launch Confluent Platform by running:
+`docker-compose up -d`
 
-Access to the shell of kafka:
-`docker exec -it kafka /bin/sh`
+Create the kafka topic:
+`docker-compose exec broker kafka-topics --create --topic geolocation_topic --bootstrap-server broker:9092`
 
-Check if your topic exist:
-`cd opt/kafka`
-`./bin/kafka-topics.sh --list --zookeeper zookeeper:2181`
+### In development mode
 
-If you don't find the topic, create it:
-`./bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic geolocation_topic`
+#### Start a console consumer (to read records sent to the topic)
+From the same terminal you used to create the topic above, run the following command to open a terminal on the broker container:
+`docker-compose exec broker bash`
+
+From within the terminal on the broker container, run this command to start a console consumer:
+`kafka-console-consumer \
+  --topic geolocation_topic \
+  --bootstrap-server broker:9092`
