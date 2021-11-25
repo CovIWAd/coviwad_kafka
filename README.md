@@ -17,6 +17,4 @@ From the same terminal you used to create the topic above, run the following com
 `docker-compose exec broker bash`
 
 From within the terminal on the broker container, run this command to start a console consumer:
-`kafka-console-consumer \
-  --topic geolocation_topic \
-  --bootstrap-server broker:9092`
+`kafka-console-consumer --topic geolocation_topic --bootstrap-server broker:9092`
