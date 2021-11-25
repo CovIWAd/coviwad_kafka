@@ -8,7 +8,7 @@ Run docker-compose configuration:
 `docker-compose -f docker-compose.yml up -d`
 
 Access to the shell of kafka:
-`docker exec -it Kafka /bin/sh`
+`docker exec -it kafka /bin/sh`
 
 Check if your topic exist:
 `cd opt/kafka`
